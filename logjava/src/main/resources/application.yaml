@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: demo
+
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
