@@ -1,47 +1,60 @@
 package consumer
 
-import(
+import (
 	"log"
-	"Processor/config"
+
+	"processor/config"
 	"processor/worker"
 
-	"git.com/IBM/sarama"
+	"github.com/IBM/sarama"
 )
 
-func StartConsumer(topic string,workerCount int){
-	cfg:=config.NewKafkaConfig()
-	brokers:=config.GetBrokers()
+func StartConsumer(topic string, workerCount int) {
 
-	consumer, err:=sarama.NewConsumer(brokers,cfg)
-	if err!=nil{
-		log.Fatalf("Error creating consumer:%v",err)
-	}
-	defer consumer.Close()
+	cfg := config.NewKafkaConfig()
+	brokers := config.GetBrokers()
 
-	partitions, err :=consumer.Partitions(topic)
-	if err!=nil{
-		log.Fatalf("Error fetching partitions: %v",err)
+	consumer, err := sarama.NewConsumer(brokers, cfg)
+	if err != nil {
+		log.Fatalf("Error creating consumer: %v", err)
 	}
 
-	jobs:=make(chan []byte,100)
+	partitions, err := consumer.Partitions(topic)
+	if err != nil {
+		log.Fatalf("Error fetching partitions: %v", err)
+	}
+	log.Printf("Kafka consumer connected. topic=%s partitions=%v", topic, partitions)
 
-	//start workers
-	for i:=0,i<workerCount;i++{
-		go worker.StartWorker(i,jobs)
+	jobs := make(chan []byte, 100)
+
+	// start workers
+	for i := 0; i < workerCount; i++ {
+		go worker.StartWorker(i, jobs)
 	}
 
-	//consume partitions
+	// consume partitions
+	for _, partition := range partitions {
 
-	for_, partition:=range partitions{
-		pc, err:=consumer.ConsumePartition(topic,partition,sarama.OffsetNewest)
-		if err!=nil{
-			log.Fatalf("Error  consuming partition %d: %v",partition,err)
+		pc, err := consumer.ConsumePartition(topic, partition, sarama.OffsetNewest)
+		if err != nil {
+			log.Fatalf("Error consuming partition %d: %v", partition, err)
 		}
 
-		go func(pc sarama.PartitionConsumer){
-			for:=msg:=range pc.Messages(){
-				jobs<-msg.value
+		go func(partition int32, pc sarama.PartitionConsumer) {
+			for {
+				select {
+				case msg, ok := <-pc.Messages():
+					if !ok {
+						log.Printf("Partition %d message channel closed", partition)
+						return
+					}
+					jobs <- msg.Value
+				case err, ok := <-pc.Errors():
+					if ok && err != nil {
+						log.Printf("Partition %d consumer error: %v", partition, err)
+					}
+				}
 			}
-		}(pc)
+		}(partition, pc)
 	}
 }

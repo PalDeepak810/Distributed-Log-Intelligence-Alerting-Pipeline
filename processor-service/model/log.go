@@ -1,8 +1,9 @@
-type log struct{
-	Service string `json:"service:`
-    Level string `jason:"level"`
-    Message string `json:"message"`
-	Timestamp int64 `json:"timestamp"`
-	TraceId string `json:"traceId"`
+package model
 
+type Log struct {
+	Service   string `json:"service"`
+	Level     string `json:"level"`
+	Message   string `json:"message"`
+	Timestamp int64  `json:"timestamp"`
+	TraceID   string `json:"traceId"`
 }

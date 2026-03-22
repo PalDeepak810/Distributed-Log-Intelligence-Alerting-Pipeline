@@ -5,13 +5,14 @@ import (
 	"processor/consumer"
 )
 
-func main(){
-	topic:="logs-topic"
-	workerCount:=5
+func main() {
 
-	consumer.StartConsumer(topic,workerCount)
+	topic := "logs-topic"
+	workerCount := 5
+
+	consumer.StartConsumer(topic, workerCount)
 
 	fmt.Println("Processor service started...")
 
-	select{}
+	select {}
 }
