@@ -1,6 +1,7 @@
 package consumer
 
 import (
+	"context"
 	"log"
 
 	"processor/config"
@@ -12,18 +13,16 @@ import (
 func StartConsumer(topic string, workerCount int) {
 
 	cfg := config.NewKafkaConfig()
+	cfg.Consumer.Group.Rebalance.Strategy = sarama.BalanceStrategyRoundRobin
+
 	brokers := config.GetBrokers()
+	groupID := "log-processor-group"
 
-	consumer, err := sarama.NewConsumer(brokers, cfg)
+	consumerGroup, err := sarama.NewConsumerGroup(brokers, groupID, cfg)
 	if err != nil {
-		log.Fatalf("Error creating consumer: %v", err)
+		log.Fatalf("Error creating consumer group: %v", err)
 	}
-
-	partitions, err := consumer.Partitions(topic)
-	if err != nil {
-		log.Fatalf("Error fetching partitions: %v", err)
-	}
-	log.Printf("Kafka consumer connected. topic=%s partitions=%v", topic, partitions)
+	defer consumerGroup.Close()
 
 	jobs := make(chan []byte, 100)
 
@@ -32,29 +31,14 @@ func StartConsumer(topic string, workerCount int) {
 		go worker.StartWorker(i, jobs)
 	}
 
-	// consume partitions
-	for _, partition := range partitions {
+	handler := &ConsumerHandler{
+		jobs: jobs,
+	}
 
-		pc, err := consumer.ConsumePartition(topic, partition, sarama.OffsetNewest)
+	for {
+		err := consumerGroup.Consume(context.Background(), []string{topic}, handler)
 		if err != nil {
-			log.Fatalf("Error consuming partition %d: %v", partition, err)
+			log.Printf("Error consuming: %v", err)
 		}
-
-		go func(partition int32, pc sarama.PartitionConsumer) {
-			for {
-				select {
-				case msg, ok := <-pc.Messages():
-					if !ok {
-						log.Printf("Partition %d message channel closed", partition)
-						return
-					}
-					jobs <- msg.Value
-				case err, ok := <-pc.Errors():
-					if ok && err != nil {
-						log.Printf("Partition %d consumer error: %v", partition, err)
-					}
-				}
-			}
-		}(partition, pc)
 	}
 }
