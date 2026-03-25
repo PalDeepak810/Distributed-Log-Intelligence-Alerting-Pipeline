@@ -2,6 +2,7 @@ package alert
 
 import (
 	"fmt"
+	"processor/monitor"
 	"strings"
 	"sync"
 	"time"
@@ -55,6 +56,12 @@ func CheckErrorSpike(service string) {
 			windowSize,
 			service,
 		)
+		monitor.AddAlert(monitor.AlertEvent{
+			Type:    "SPIKE_DETECTED",
+			Service: service,
+			Level:   "ERROR",
+			Message: fmt.Sprintf("%d errors in %v", len(validTimes), windowSize),
+		})
 
 		// reset after alert
 		tracker.timestamps[service] = []time.Time{}

@@ -7,6 +7,7 @@ import (
 
 	"processor/alert"
 	"processor/model"
+	"processor/monitor"
 )
 
 func ProcessLog(data []byte) {
@@ -37,6 +38,7 @@ func enrichLog(log model.Log) model.Log {
 }
 
 func analyzeLog(log model.Log) {
+	monitor.AddLog(log)
 	fmt.Println("Processed Log:", log.Service, log.Level, log.Message)
 }
 

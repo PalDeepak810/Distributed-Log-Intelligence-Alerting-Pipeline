@@ -1,14 +1,49 @@
 package pipeline
 
 import (
-	"fmt"
 	"processor/model"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
 )
 
+// Precompiled regex (performance optimized)
+var levelRegex = regexp.MustCompile(`(?i)\b(ERROR|WARN|INFO|DEBUG)\b`)
+var cleanRegex = regexp.MustCompile(`(?i)\[(ERROR|WARN|INFO|DEBUG)\]`)
+
+
+
+func Normalize(raw map[string]interface{}) model.Log {
+
+	// Structured logs detection
+	if raw["service"] != nil || raw["level"] != nil || raw["message"] != nil ||
+		raw["status"] != nil || raw["error"] != nil || raw["path"] != nil {
+		return normalizeStructured(raw)
+	}
+
+	// Raw log handling
+	if raw["raw_log"] != nil {
+		if val, ok := raw["raw_log"].(string); ok {
+			return normalizeRaw(val)
+		}
+	}
+
+	// Fallback
+	return model.Log{
+		Service:   "unknown-service",
+		Level:     "INFO",
+		Message:   "unrecognized format",
+		Timestamp: time.Now().Unix(),
+	}
+}
+
+
+// STRUCTURED NORMALIZATION
+
+
 func normalizeStructured(raw map[string]interface{}) model.Log {
+
 	service := getString(raw, "service")
 	if service == "" {
 		service = getString(raw, "app")
@@ -17,12 +52,14 @@ func normalizeStructured(raw map[string]interface{}) model.Log {
 		service = getString(raw, "application")
 	}
 	if service == "" {
-		service = "unknown"
+		service = "unknown-service"
 	}
 
-	level := strings.ToUpper(strings.TrimSpace(getString(raw, "level")))
+	level := normalizeLevel(getString(raw, "level"))
+
 	status := getInt(raw, "status")
 	errField := getString(raw, "error")
+
 	if level == "" {
 		switch {
 		case errField != "":
@@ -59,28 +96,64 @@ func normalizeStructured(raw map[string]interface{}) model.Log {
 	}
 }
 
+
+// RAW LOG NORMALIZATION
+
+
 func normalizeRaw(log string) model.Log {
 
-	lower := strings.ToLower(log)
-
-	level := "INFO"
-
-	if strings.Contains(lower, "error") {
-		level = "ERROR"
-	} else if strings.Contains(lower, "warn") {
-		level = "WARN"
-	}
+	level := extractLevel(log)
+	cleanMsg := cleanMessage(log)
 
 	return model.Log{
-		Service:   "unknown",
+		Service:   "unknown-service",
 		Level:     level,
-		Message:   log,
+		Message:   cleanMsg,
 		Timestamp: time.Now().Unix(),
 	}
 }
 
-func getString(raw map[string]interface{}, key string) string {
 
+// HELPERS
+
+
+func extractLevel(log string) string {
+	match := levelRegex.FindString(log)
+	if match != "" {
+		return strings.ToUpper(match)
+	}
+	return "INFO"
+}
+
+func cleanMessage(log string) string {
+
+	// Remove [ERROR], [WARN], etc.
+	clean := cleanRegex.ReplaceAllString(log, "")
+
+	// Remove inline ERROR/WARN/INFO
+	clean = levelRegex.ReplaceAllString(clean, "")
+
+	return strings.TrimSpace(clean)
+}
+
+func normalizeLevel(level string) string {
+	l := strings.ToUpper(strings.TrimSpace(level))
+
+	switch l {
+	case "ERROR", "ERR":
+		return "ERROR"
+	case "WARN", "WARNING":
+		return "WARN"
+	case "DEBUG":
+		return "DEBUG"
+	case "INFO":
+		return "INFO"
+	default:
+		return ""
+	}
+}
+
+func getString(raw map[string]interface{}, key string) string {
 	if val, ok := raw[key]; ok {
 		if str, ok := val.(string); ok {
 			return str
@@ -132,9 +205,13 @@ func getTimestamp(raw map[string]interface{}) int64 {
 		if s == "" {
 			return time.Now().Unix()
 		}
+
+		
 		if parsed, err := time.Parse(time.RFC3339Nano, s); err == nil {
 			return parsed.Unix()
 		}
+
+		// Try numeric string
 		if n, err := strconv.ParseInt(s, 10, 64); err == nil {
 			return n
 		}
@@ -150,39 +227,4 @@ func firstNonEmpty(values ...string) string {
 		}
 	}
 	return ""
-}
-
-func Normalize(raw map[string]interface{}) model.Log {
-	// structured logs
-	if raw["service"] != nil || raw["level"] != nil || raw["message"] != nil ||
-		raw["status"] != nil || raw["error"] != nil || raw["path"] != nil {
-		return normalizeStructured(raw)
-	}
-
-	// unstructured raw logs
-	if raw["raw_log"] != nil {
-		rawLine := getString(raw, "raw_log")
-		if rawLine == "" {
-			rawLine = fmt.Sprintf("%v", raw["raw_log"])
-		}
-
-		normalized := normalizeRaw(rawLine)
-		normalized.Service = firstNonEmpty(
-			getString(raw, "service"),
-			getString(raw, "source"),
-			getString(raw, "app"),
-			getString(raw, "application"),
-			normalized.Service,
-		)
-		normalized.Timestamp = getTimestamp(raw)
-		return normalized
-	}
-
-	// fallback
-	return model.Log{
-		Service:   "unknown",
-		Level:     "INFO",
-		Message:   "unrecognized format",
-		Timestamp: time.Now().Unix(),
-	}
 }
