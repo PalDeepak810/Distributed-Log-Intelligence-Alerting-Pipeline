@@ -1,0 +1,107 @@
+2026/03/30 12:45:41 Processor service started. API listening on :8081
+2026/03/30 12:45:43 Error consuming: read tcp 10.78.16.103:61398->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:45:43 Error consuming: read tcp 10.78.16.103:61401->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:45:43 Error consuming: read tcp 10.78.16.103:61405->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:45:44 Error consuming: read tcp 10.78.16.103:61408->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:46:14 Error consuming: read tcp 10.78.16.103:61411->206.189.94.147:26932: i/o timeout
+2026/03/30 12:46:15 Error consuming: read tcp 10.78.16.103:61449->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:46:45 Error consuming: read tcp 10.78.16.103:52164->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:46:46 Error consuming: read tcp 10.78.16.103:52166->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:46:46 Error consuming: read tcp 10.78.16.103:52168->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:16 Error consuming: read tcp 10.78.16.103:55020->206.189.94.147:26932: i/o timeout
+2026/03/30 12:47:17 Error consuming: read tcp 10.78.16.103:54634->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:17 Error consuming: read tcp 10.78.16.103:54636->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:17 Error consuming: read tcp 10.78.16.103:54639->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:18 Error consuming: read tcp 10.78.16.103:54642->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:48 Error consuming: read tcp 10.78.16.103:60282->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:49 Error consuming: read tcp 10.78.16.103:60284->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:49 Error consuming: read tcp 10.78.16.103:60286->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:49 Error consuming: read tcp 10.78.16.103:60288->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:50 Error consuming: read tcp 10.78.16.103:60290->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:50 Error consuming: read tcp 10.78.16.103:60292->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:47:51 Error consuming: read tcp 10.78.16.103:60294->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:48:21 Error consuming: read tcp 10.78.16.103:60296->206.189.94.147:26932: i/o timeout
+2026/03/30 12:48:21 Error consuming: read tcp 10.78.16.103:56411->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:48:22 Error consuming: read tcp 10.78.16.103:56413->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:48:22 Error consuming: read tcp 10.78.16.103:56415->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:48:23 Error consuming: read tcp 10.78.16.103:56117->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:48:23 Error consuming: read tcp 10.78.16.103:56119->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:48:23 Error consuming: read tcp 10.78.16.103:56121->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:49:24 Error consuming: read tcp 10.78.16.103:62321->206.189.94.147:26932: i/o timeout
+2026/03/30 12:49:24 Error consuming: read tcp 10.78.16.103:53853->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:49:54 Error consuming: read tcp 10.78.16.103:53855->206.189.94.147:26932: i/o timeout
+2026/03/30 12:49:55 Error consuming: read tcp 10.78.16.103:50976->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:49:55 Error consuming: read tcp 10.78.16.103:50979->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:49:55 Error consuming: read tcp 10.78.16.103:50982->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:26 Error consuming: read tcp 10.78.16.103:50985->206.189.94.147:26932: i/o timeout
+2026/03/30 12:50:26 Error consuming: read tcp 10.78.16.103:55942->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:57 Error consuming: read tcp 10.78.16.103:53823->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:57 Error consuming: read tcp 10.78.16.103:53824->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:57 Error consuming: read tcp 10.78.16.103:64957->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:58 Error consuming: read tcp 10.78.16.103:64959->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:58 Error consuming: read tcp 10.78.16.103:58095->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:59 Error consuming: read tcp 10.78.16.103:61292->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:59 Error consuming: read tcp 10.78.16.103:61294->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:50:59 Error consuming: read tcp 10.78.16.103:61296->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:00 Error consuming: read tcp 10.78.16.103:61298->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:30 Error consuming: read tcp 10.78.16.103:53662->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:31 Error consuming: read tcp 10.78.16.103:53665->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:31 Error consuming: read tcp 10.78.16.103:53667->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:31 Error consuming: read tcp 10.78.16.103:53669->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:32 Error consuming: read tcp 10.78.16.103:53671->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:32 Error consuming: read tcp 10.78.16.103:53673->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:33 Error consuming: read tcp 10.78.16.103:53675->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:33 Error consuming: read tcp 10.78.16.103:53677->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:34 Error consuming: read tcp 10.78.16.103:53679->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:34 Error consuming: read tcp 10.78.16.103:53681->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:51:34 Error consuming: read tcp 10.78.16.103:53683->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:52:05 Error consuming: read tcp 10.78.16.103:53685->206.189.94.147:26932: i/o timeout
+2026/03/30 12:52:05 Error consuming: read tcp 10.78.16.103:63209->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:52:35 Error consuming: read tcp 10.78.16.103:63211->206.189.94.147:26932: i/o timeout
+2026/03/30 12:52:36 Error consuming: read tcp 10.78.16.103:63274->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:07 Error consuming: read tcp 10.78.16.103:61643->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:08 Error consuming: read tcp 10.78.16.103:61646->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:42 Error consuming: read tcp 10.78.16.103:55062->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:42 Error consuming: read tcp 10.78.16.103:55075->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:44 Error consuming: read tcp 10.78.16.103:55079->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:48 Error consuming: read tcp 10.78.16.103:55084->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:52 Error consuming: read tcp 10.78.16.103:55103->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:53:52 Error consuming: read tcp 10.78.16.103:55112->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:05 Error consuming: read tcp 10.78.16.103:55116->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:36 Error consuming: read tcp 10.78.16.103:55174->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:37 Error consuming: read tcp 10.78.16.103:55176->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:38 Error consuming: read tcp 10.78.16.103:55178->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:40 Error consuming: read tcp 10.78.16.103:55181->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:40 Error consuming: read tcp 10.78.16.103:55183->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:43 Error consuming: read tcp 10.78.16.103:55185->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:45 Error consuming: read tcp 10.78.16.103:55187->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:51 Error consuming: read tcp 10.78.16.103:55191->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:53 Error consuming: read tcp 10.78.16.103:55193->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:55 Error consuming: read tcp 10.78.16.103:55195->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:56 Error consuming: read tcp 10.78.16.103:55197->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:56 Error consuming: read tcp 10.78.16.103:55198->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:57 Error consuming: read tcp 10.78.16.103:55200->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:54:59 Error consuming: read tcp 10.78.16.103:55202->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:00 Error consuming: read tcp 10.78.16.103:55204->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:00 Error consuming: read tcp 10.78.16.103:56001->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:01 Error consuming: read tcp 10.78.16.103:50637->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:03 Error consuming: read tcp 10.78.16.103:50650->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:25 Error consuming: read tcp 10.78.16.103:50653->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:26 Error consuming: read tcp 10.78.16.103:58642->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:27 Error consuming: read tcp 10.78.16.103:58655->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:27 Error consuming: read tcp 10.78.16.103:58657->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:55:58 Error consuming: read tcp 10.78.16.103:58659->206.189.94.147:26932: i/o timeout
+2026/03/30 12:56:07 Error consuming: read tcp 10.78.16.103:64493->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:56:08 Error consuming: read tcp 10.78.16.103:64495->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:56:08 Error consuming: read tcp 10.78.16.103:54422->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:56:39 Error consuming: read tcp 10.78.16.103:54424->206.189.94.147:26932: i/o timeout
+2026/03/30 12:56:41 Error consuming: read tcp 10.78.16.103:54446->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:56:42 Error consuming: read tcp 10.78.16.103:54448->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:56:43 Error consuming: read tcp 10.78.16.103:54450->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:56:46 Error consuming: read tcp 10.78.16.103:54452->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:57:17 Error consuming: read tcp 10.78.16.103:54455->206.189.94.147:26932: i/o timeout
+2026/03/30 12:57:18 Error consuming: read tcp 10.78.16.103:58493->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:57:49 Error consuming: read tcp 10.78.16.103:58495->206.189.94.147:26932: i/o timeout
+2026/03/30 12:57:49 Error consuming: read tcp 10.78.16.103:58521->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+2026/03/30 12:57:50 Error consuming: read tcp 10.78.16.103:58523->206.189.94.147:26932: wsarecv: An existing connection was forcibly closed by the remote host.
+exit status 0xffffffff

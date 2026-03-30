@@ -1,6 +1,7 @@
 package pipeline
 
 import (
+	"encoding/json"
 	"processor/model"
 	"regexp"
 	"strconv"
@@ -12,8 +13,6 @@ import (
 var levelRegex = regexp.MustCompile(`(?i)\b(ERROR|WARN|INFO|DEBUG)\b`)
 var cleanRegex = regexp.MustCompile(`(?i)\[(ERROR|WARN|INFO|DEBUG)\]`)
 
-
-
 func Normalize(raw map[string]interface{}) model.Log {
 
 	// Structured logs detection
@@ -24,9 +23,17 @@ func Normalize(raw map[string]interface{}) model.Log {
 
 	// Raw log handling
 	if raw["raw_log"] != nil {
-		if val, ok := raw["raw_log"].(string); ok {
-			return normalizeRaw(val)
-		}
+		rawLine := toString(raw["raw_log"])
+		normalized := normalizeRaw(rawLine)
+		normalized.Service = firstNonEmpty(
+			getString(raw, "service"),
+			getString(raw, "source"),
+			getString(raw, "app"),
+			getString(raw, "application"),
+			normalized.Service,
+		)
+		normalized.Timestamp = getTimestamp(raw)
+		return normalized
 	}
 
 	// Fallback
@@ -38,9 +45,7 @@ func Normalize(raw map[string]interface{}) model.Log {
 	}
 }
 
-
 // STRUCTURED NORMALIZATION
-
 
 func normalizeStructured(raw map[string]interface{}) model.Log {
 
@@ -96,14 +101,16 @@ func normalizeStructured(raw map[string]interface{}) model.Log {
 	}
 }
 
-
 // RAW LOG NORMALIZATION
 
-
 func normalizeRaw(log string) model.Log {
+	sourceText := extractRawMessage(log)
 
-	level := extractLevel(log)
-	cleanMsg := cleanMessage(log)
+	level := extractLevel(sourceText)
+	cleanMsg := cleanMessage(sourceText)
+	if cleanMsg == "" {
+		cleanMsg = sourceText
+	}
 
 	return model.Log{
 		Service:   "unknown-service",
@@ -113,9 +120,23 @@ func normalizeRaw(log string) model.Log {
 	}
 }
 
+func extractRawMessage(log string) string {
+	trimmed := strings.TrimSpace(log)
+	if strings.HasPrefix(trimmed, "{") && strings.HasSuffix(trimmed, "}") {
+		var payload map[string]interface{}
+		if err := json.Unmarshal([]byte(trimmed), &payload); err == nil {
+			return firstNonEmpty(
+				getString(payload, "raw_log"),
+				getString(payload, "message"),
+				getString(payload, "error"),
+				trimmed,
+			)
+		}
+	}
+	return log
+}
 
 // HELPERS
-
 
 func extractLevel(log string) string {
 	match := levelRegex.FindString(log)
@@ -206,7 +227,6 @@ func getTimestamp(raw map[string]interface{}) int64 {
 			return time.Now().Unix()
 		}
 
-		
 		if parsed, err := time.Parse(time.RFC3339Nano, s); err == nil {
 			return parsed.Unix()
 		}
@@ -227,4 +247,19 @@ func firstNonEmpty(values ...string) string {
 		}
 	}
 	return ""
+}
+
+func toString(value interface{}) string {
+	switch v := value.(type) {
+	case nil:
+		return ""
+	case string:
+		return v
+	default:
+		data, err := json.Marshal(v)
+		if err == nil {
+			return string(data)
+		}
+		return ""
+	}
 }

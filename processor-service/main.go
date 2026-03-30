@@ -47,8 +47,8 @@ func main() {
 		_ = json.NewEncoder(w).Encode(monitor.GetMetrics())
 	}))
 
-	log.Println("Processor service started. API listening on :8090")
-	log.Fatal(http.ListenAndServe(":8090", nil))
+	log.Println("Processor service started. API listening on :8081")
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }
 
 func withCORS(next http.HandlerFunc) http.HandlerFunc {
