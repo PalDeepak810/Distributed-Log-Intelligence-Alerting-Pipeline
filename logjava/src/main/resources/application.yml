@@ -29,3 +29,6 @@ management:
 logging:
   level:
     org.apache.kafka: DEBUG
+
+server:
+  port: 8080
