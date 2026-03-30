@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: demo
+
+  kafka:
+    bootstrap-servers: kafkalogservice-dp220001-beec.g.aivencloud.com:26932
+
+    properties:
+      security.protocol: SSL
+
+      ssl.truststore.type: PEM
+      ssl.truststore.location: /app/ca.pem
+
+      ssl.keystore.type: PKCS12
+      ssl.keystore.location: /app/keystore.p12
+      ssl.keystore.password: password
+
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    org.apache.kafka: DEBUG
