@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const res = await fetch("http://localhost:8090/logs");
+        const res = await fetch("https://distributed-log-intelligence-alerting-va0z.onrender.com/logs");
         const data = await res.json();
         setLogs(Array.isArray(data) ? data : []);
         setIsConnected(true);
